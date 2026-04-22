@@ -2659,13 +2659,13 @@ MonoBehaviour:
     hoursWorkedText: 12
     note: 
   - dateIso: 2026-04-03
-    status: 0
+    status: 1
     clockIn:
-      hasValue: 0
+      hasValue: 1
       hour: 9
       minute: 0
     clockOut:
-      hasValue: 0
+      hasValue: 1
       hour: 17
       minute: 0
     hoursWorkedText: 24

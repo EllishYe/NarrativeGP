@@ -56,6 +56,9 @@ namespace NarrativeGP.Attendance
 
         private readonly Dictionary<string, AttendanceRecord> recordLookup = new();
         private string selectedDateIso;
+        private string runtimeDateIso;
+        private bool hasCheckedInToday;
+        private AttendanceTimeValue todayClockInTime;
 
         private void Reset()
         {
@@ -65,6 +68,7 @@ namespace NarrativeGP.Attendance
         private void Awake()
         {
             BuildLookup();
+            SyncRuntimeDate();
 
             foreach (AttendanceCalendarDateButton calendarButton in calendarButtons)
             {
@@ -112,23 +116,16 @@ namespace NarrativeGP.Attendance
         public void CheckIn()
         {
             DateTime currentGameDate = GetCurrentGameDate();
-            if (!TryGetRecord(currentGameDate, out AttendanceRecord record))
+            SyncRuntimeDate();
+
+            if (!CanCheckIn(currentGameDate))
             {
                 return;
             }
 
-            if (!CanCheckIn(record, currentGameDate))
-            {
-                return;
-            }
-
-            record.status = AttendanceStatus.Attended;
-            record.clockIn = defaultCheckInTime;
-            record.clockOut = new AttendanceTimeValue();
-            record.hoursWorkedText = "In Progress";
-            record.note = string.IsNullOrWhiteSpace(record.note) ? "-" : record.note;
-
-            selectedDateIso = record.dateIso;
+            hasCheckedInToday = true;
+            todayClockInTime = defaultCheckInTime;
+            selectedDateIso = currentGameDate.ToString("yyyy-MM-dd");
             RefreshView();
 
             if (gameState != null)
@@ -140,6 +137,8 @@ namespace NarrativeGP.Attendance
         [ContextMenu("Refresh Attendance")]
         public void RefreshView()
         {
+            SyncRuntimeDate();
+
             if (string.IsNullOrWhiteSpace(selectedDateIso))
             {
                 SelectCurrentGameDate();
@@ -160,6 +159,19 @@ namespace NarrativeGP.Attendance
         private void HandleGameStateChanged()
         {
             RefreshView();
+        }
+
+        private void SyncRuntimeDate()
+        {
+            string currentDateIso = GetCurrentGameDate().ToString("yyyy-MM-dd");
+            if (runtimeDateIso == currentDateIso)
+            {
+                return;
+            }
+
+            runtimeDateIso = currentDateIso;
+            hasCheckedInToday = false;
+            todayClockInTime = new AttendanceTimeValue();
         }
 
         private void BuildLookup()
@@ -235,21 +247,15 @@ namespace NarrativeGP.Attendance
                 return;
             }
 
+            if (relation == DateRelation.Today)
+            {
+                ApplyTodayDetail(selectedDate);
+                return;
+            }
+
             if (!TryGetRecord(selectedDate, out AttendanceRecord record))
             {
                 ApplyBlankDetail(selectedDateIso);
-                return;
-            }
-
-            if (relation == DateRelation.Today && record.status == AttendanceStatus.Pending)
-            {
-                ApplyPendingDetail(record);
-                return;
-            }
-
-            if (relation == DateRelation.Today && record.status == AttendanceStatus.Attended && !record.clockOut.hasValue)
-            {
-                ApplyCheckedInDetail(record);
                 return;
             }
 
@@ -264,28 +270,41 @@ namespace NarrativeGP.Attendance
             }
 
             DateTime currentGameDate = GetCurrentGameDate();
-            bool canCheckIn = TryGetRecord(currentGameDate, out AttendanceRecord record) && CanCheckIn(record, currentGameDate);
+            bool canCheckIn = CanCheckIn(currentGameDate);
             checkInButton.interactable = canCheckIn && selectedDateIso == currentGameDate.ToString("yyyy-MM-dd");
         }
 
-        private bool CanCheckIn(AttendanceRecord record, DateTime currentGameDate)
+        private bool CanCheckIn(DateTime currentGameDate)
         {
-            if (record == null)
+            if (!TryParseDate(selectedDateIso, out DateTime selectedDate))
             {
                 return false;
             }
 
-            if (!TryParseDate(record.dateIso, out DateTime recordDate))
+            if (!SameDate(selectedDate, currentGameDate))
             {
                 return false;
             }
 
-            return SameDate(recordDate, currentGameDate) && record.status == AttendanceStatus.Pending;
+            return !hasCheckedInToday;
         }
 
-        private void ApplyPendingDetail(AttendanceRecord record)
+        private void ApplyTodayDetail(DateTime currentGameDate)
         {
-            SetDetailText(dateValueText, record.dateIso);
+            string currentDateIso = currentGameDate.ToString("yyyy-MM-dd");
+
+            if (!hasCheckedInToday)
+            {
+                ApplyPendingDetail(currentDateIso);
+                return;
+            }
+
+            ApplyCheckedInDetail(currentDateIso);
+        }
+
+        private void ApplyPendingDetail(string dateIso)
+        {
+            SetDetailText(dateValueText, dateIso);
             SetDetailText(statusValueText, AttendanceStatus.Pending.ToString());
             SetDetailText(clockInValueText, "-:-");
             SetDetailText(clockOutValueText, "-:-");
@@ -293,11 +312,11 @@ namespace NarrativeGP.Attendance
             SetDetailText(noteValueText, "-");
         }
 
-        private void ApplyCheckedInDetail(AttendanceRecord record)
+        private void ApplyCheckedInDetail(string dateIso)
         {
-            SetDetailText(dateValueText, record.dateIso);
+            SetDetailText(dateValueText, dateIso);
             SetDetailText(statusValueText, AttendanceStatus.Attended.ToString());
-            SetDetailText(clockInValueText, record.clockIn.ToDisplayString());
+            SetDetailText(clockInValueText, todayClockInTime.ToDisplayString());
             SetDetailText(clockOutValueText, "-:-");
             SetDetailText(hoursWorkedValueText, "In Progress");
             SetDetailText(noteValueText, "-");
