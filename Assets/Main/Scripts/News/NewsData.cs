@@ -17,6 +17,8 @@ namespace NarrativeGP.News
         public string id;
         public string listTitle;
         public string displayTitle;
+        public int arrivalDay = 1;
+        public int sortOrder;
         public Sprite image;
         public List<BodyVersionEntry> bodyVersions = new();
     }

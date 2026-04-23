@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -14,6 +15,9 @@ namespace NarrativeGP.News
             public int currentVersion;
             public bool hasBeenOpened;
         }
+
+        [Header("Dependencies")]
+        [SerializeField] private GameState gameState;
 
         [Header("Data")]
         [SerializeField] private List<NewsData> newsItems = new();
@@ -34,8 +38,14 @@ namespace NarrativeGP.News
 
         private readonly Dictionary<string, NewsData> newsLookup = new();
         private readonly Dictionary<string, NewsRuntimeState> runtimeLookup = new();
+        private readonly List<NewsData> visibleNewsItems = new();
         private readonly List<NewsListItemView> spawnedItemViews = new();
         private string selectedNewsId;
+
+        private void Reset()
+        {
+            gameState = FindFirstObjectByType<GameState>();
+        }
 
         private void Awake()
         {
@@ -45,13 +55,25 @@ namespace NarrativeGP.News
 
         private void OnEnable()
         {
-            EnsureSelectedNews();
+            if (gameState != null)
+            {
+                gameState.StateChanged += HandleGameStateChanged;
+            }
+
             RefreshView();
+        }
+
+        private void OnDisable()
+        {
+            if (gameState != null)
+            {
+                gameState.StateChanged -= HandleGameStateChanged;
+            }
         }
 
         public void SelectNews(string newsId)
         {
-            if (string.IsNullOrWhiteSpace(newsId) || !newsLookup.ContainsKey(newsId))
+            if (string.IsNullOrWhiteSpace(newsId) || !visibleNewsItems.Any(news => news.id == newsId))
             {
                 return;
             }
@@ -82,6 +104,7 @@ namespace NarrativeGP.News
         [ContextMenu("Refresh News")]
         public void RefreshView()
         {
+            BuildVisibleNewsList();
             EnsureSelectedNews();
             RebuildListItems();
             RefreshListItems();
@@ -140,14 +163,35 @@ namespace NarrativeGP.News
             }
         }
 
+        private void BuildVisibleNewsList()
+        {
+            visibleNewsItems.Clear();
+
+            int currentDay = gameState != null ? Mathf.Max(1, gameState.CurrentDay) : 1;
+            foreach (NewsData newsData in newsItems)
+            {
+                if (newsData == null || string.IsNullOrWhiteSpace(newsData.id))
+                {
+                    continue;
+                }
+
+                if (newsData.arrivalDay <= currentDay)
+                {
+                    visibleNewsItems.Add(newsData);
+                }
+            }
+
+            visibleNewsItems.Sort(CompareNewsItems);
+        }
+
         private void EnsureSelectedNews()
         {
-            if (!string.IsNullOrWhiteSpace(selectedNewsId) && newsLookup.ContainsKey(selectedNewsId))
+            if (!string.IsNullOrWhiteSpace(selectedNewsId) && visibleNewsItems.Any(news => news.id == selectedNewsId))
             {
                 return;
             }
 
-            foreach (NewsData newsData in newsItems)
+            foreach (NewsData newsData in visibleNewsItems)
             {
                 if (newsData != null && !string.IsNullOrWhiteSpace(newsData.id))
                 {
@@ -176,7 +220,7 @@ namespace NarrativeGP.News
                 return;
             }
 
-            foreach (NewsData newsData in newsItems)
+            foreach (NewsData newsData in visibleNewsItems)
             {
                 if (newsData == null || string.IsNullOrWhiteSpace(newsData.id))
                 {
@@ -322,7 +366,7 @@ namespace NarrativeGP.News
 
         private bool TryGetSelectedNews(out NewsData selectedNews)
         {
-            if (!string.IsNullOrWhiteSpace(selectedNewsId) && newsLookup.TryGetValue(selectedNewsId, out selectedNews))
+            if (!string.IsNullOrWhiteSpace(selectedNewsId) && newsLookup.TryGetValue(selectedNewsId, out selectedNews) && visibleNewsItems.Any(item => item.id == selectedNewsId))
             {
                 return true;
             }
@@ -349,6 +393,28 @@ namespace NarrativeGP.News
             {
                 target.text = value;
             }
+        }
+
+        private void HandleGameStateChanged()
+        {
+            RefreshView();
+        }
+
+        private static int CompareNewsItems(NewsData left, NewsData right)
+        {
+            int arrivalComparison = right.arrivalDay.CompareTo(left.arrivalDay);
+            if (arrivalComparison != 0)
+            {
+                return arrivalComparison;
+            }
+
+            int sortOrderComparison = left.sortOrder.CompareTo(right.sortOrder);
+            if (sortOrderComparison != 0)
+            {
+                return sortOrderComparison;
+            }
+
+            return string.CompareOrdinal(left.id, right.id);
         }
     }
 }
