@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using NarrativeGP.Emails;
 
 namespace NarrativeGP
 {
@@ -7,10 +8,29 @@ namespace NarrativeGP
     {
         [SerializeField] private GameState gameState;
         [SerializeField] private SectionFlowDefinition flowDefinition;
+        [SerializeField] private EmailsController emailsController;
 
         private void Reset()
         {
             gameState = FindFirstObjectByType<GameState>();
+        }
+
+        private void OnEnable()
+        {
+            if (gameState != null)
+            {
+                gameState.StateChanged += HandleGameStateChanged;
+            }
+
+            SyncSectionProviders();
+        }
+
+        private void OnDisable()
+        {
+            if (gameState != null)
+            {
+                gameState.StateChanged -= HandleGameStateChanged;
+            }
         }
 
         public bool IsSectionInteractable(SectionId sectionId)
@@ -83,9 +103,19 @@ namespace NarrativeGP
 
         private bool IsLaterDaySectionInteractable(SectionId sectionId)
         {
+            if (sectionId == SectionId.Attendance)
+            {
+                return true;
+            }
+
             if (sectionId == flowDefinition.WrapUpSection)
             {
                 return AreAllDaytimeSectionsCompletedToday();
+            }
+
+            if (!gameState.WasCompletedToday(SectionId.Attendance))
+            {
+                return false;
             }
 
             foreach (SectionId daytimeSection in flowDefinition.DaytimeSections)
@@ -97,6 +127,24 @@ namespace NarrativeGP
             }
 
             return false;
+        }
+
+        private void HandleGameStateChanged()
+        {
+            SyncSectionProviders();
+        }
+
+        private void SyncSectionProviders()
+        {
+            if (gameState == null)
+            {
+                return;
+            }
+
+            if (emailsController != null)
+            {
+                emailsController.SyncSectionProgressToGameState(gameState);
+            }
         }
     }
 }

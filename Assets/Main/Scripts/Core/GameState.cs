@@ -89,6 +89,11 @@ namespace NarrativeGP
         {
             EnsureInitialized();
             SectionRuntimeState state = GetState(sectionId);
+            if (state.openedToday)
+            {
+                return;
+            }
+
             state.openedToday = true;
             NotifyStateChanged();
         }
@@ -97,6 +102,12 @@ namespace NarrativeGP
         {
             EnsureInitialized();
             SectionRuntimeState state = GetState(sectionId);
+
+            if (state.openedToday && state.completedToday && state.completedEver && !state.hasUnreadContent)
+            {
+                return;
+            }
+
             state.openedToday = true;
             state.completedToday = true;
             state.completedEver = true;
@@ -108,14 +119,49 @@ namespace NarrativeGP
         {
             EnsureInitialized();
             SectionRuntimeState state = GetState(sectionId);
+            bool didChange = state.hasUnreadContent != hasUnreadContent;
             state.hasUnreadContent = hasUnreadContent;
 
             if (hasUnreadContent)
             {
+                didChange |= state.completedToday;
                 state.completedToday = false;
             }
 
-            NotifyStateChanged();
+            if (didChange)
+            {
+                NotifyStateChanged();
+            }
+        }
+
+        public void SetSectionDailyProgress(SectionId sectionId, bool hasUnreadContent, bool isClearedToday)
+        {
+            EnsureInitialized();
+            SectionRuntimeState state = GetState(sectionId);
+            bool didChange = false;
+
+            if (state.hasUnreadContent != hasUnreadContent)
+            {
+                state.hasUnreadContent = hasUnreadContent;
+                didChange = true;
+            }
+
+            if (state.completedToday != isClearedToday)
+            {
+                state.completedToday = isClearedToday;
+                didChange = true;
+            }
+
+            if (isClearedToday && !state.completedEver)
+            {
+                state.completedEver = true;
+                didChange = true;
+            }
+
+            if (didChange)
+            {
+                NotifyStateChanged();
+            }
         }
 
         public bool WasOpenedToday(SectionId sectionId) => GetState(sectionId).openedToday;

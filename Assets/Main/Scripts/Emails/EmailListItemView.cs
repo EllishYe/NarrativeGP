@@ -6,16 +6,19 @@ namespace NarrativeGP.Emails
 {
     public class EmailListItemView : MonoBehaviour
     {
-        [SerializeField] private string emailId;
         [SerializeField] private Button button;
         [SerializeField] private Image background;
         [SerializeField] private TMP_Text subjectText;
         [SerializeField] private Color unreadTextColor = Color.red;
         [SerializeField] private Color readTextColor = Color.black;
+        [SerializeField] private Color unreadSelectedBackgroundColor = Color.red;
+        [SerializeField] private Color unreadSelectedTextColor = Color.white;
+        [SerializeField] private Color readSelectedBackgroundColor = Color.black;
+        [SerializeField] private Color readSelectedTextColor = Color.white;
         [SerializeField] private Color normalBackgroundColor = Color.white;
-        [SerializeField] private Color selectedBackgroundColor = new(0.85f, 0.85f, 0.85f, 1f);
 
         private EmailsController controller;
+        private string emailId;
 
         public string EmailId => emailId;
 
@@ -31,8 +34,10 @@ namespace NarrativeGP.Emails
             controller = owner;
         }
 
-        public void SetTitle(string subject)
+        public void Bind(string nextEmailId, string subject)
         {
+            emailId = nextEmailId;
+
             if (subjectText != null)
             {
                 subjectText.text = subject;
@@ -43,12 +48,26 @@ namespace NarrativeGP.Emails
         {
             if (subjectText != null)
             {
-                subjectText.color = isRead ? readTextColor : unreadTextColor;
+                if (isSelected)
+                {
+                    subjectText.color = isRead ? readSelectedTextColor : unreadSelectedTextColor;
+                }
+                else
+                {
+                    subjectText.color = isRead ? readTextColor : unreadTextColor;
+                }
             }
 
             if (background != null)
             {
-                background.color = isSelected ? selectedBackgroundColor : normalBackgroundColor;
+                if (isSelected)
+                {
+                    background.color = isRead ? readSelectedBackgroundColor : unreadSelectedBackgroundColor;
+                }
+                else
+                {
+                    background.color = normalBackgroundColor;
+                }
             }
         }
 
