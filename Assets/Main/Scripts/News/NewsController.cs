@@ -12,6 +12,7 @@ namespace NarrativeGP.News
         {
             public string newsId;
             public int currentVersion;
+            public bool hasBeenOpened;
         }
 
         [Header("Data")]
@@ -26,6 +27,7 @@ namespace NarrativeGP.News
         [SerializeField] private Image articleImage;
         [SerializeField] private TMP_Text bodyText;
         [SerializeField] private Button readingAreaButton;
+        [SerializeField] private Color bodyHighlightColor = new(1f, 0.93f, 0.35f, 0.75f);
 
         [Header("Runtime State")]
         [SerializeField] private List<NewsRuntimeState> runtimeStates = new();
@@ -55,7 +57,7 @@ namespace NarrativeGP.News
             }
 
             selectedNewsId = newsId;
-            MarkSelectedNewsCompletedIfNoHighlightSteps();
+            MarkSelectedNewsOpenedByUser();
             RefreshView();
         }
 
@@ -150,7 +152,6 @@ namespace NarrativeGP.News
                 if (newsData != null && !string.IsNullOrWhiteSpace(newsData.id))
                 {
                     selectedNewsId = newsData.id;
-                    MarkSelectedNewsCompletedIfNoHighlightSteps();
                     return;
                 }
             }
@@ -221,7 +222,7 @@ namespace NarrativeGP.News
 
             int currentVersion = GetRuntimeState(selectedNews.id).currentVersion;
             string versionText = GetBodyVersion(selectedNews, currentVersion);
-            SetText(bodyText, versionText);
+            SetText(bodyText, ApplyHighlightMarkup(versionText));
         }
 
         private void RefreshReadingAreaButton()
@@ -241,19 +242,14 @@ namespace NarrativeGP.News
             readingAreaButton.interactable = runtimeState.currentVersion < GetMaxVersion(selectedNews);
         }
 
-        private void MarkSelectedNewsCompletedIfNoHighlightSteps()
+        private void MarkSelectedNewsOpenedByUser()
         {
             if (!TryGetSelectedNews(out NewsData selectedNews))
             {
                 return;
             }
 
-            if (GetMaxVersion(selectedNews) > 0)
-            {
-                return;
-            }
-
-            GetRuntimeState(selectedNews.id).currentVersion = 0;
+            GetRuntimeState(selectedNews.id).hasBeenOpened = true;
         }
 
         private bool IsNewsCompleted(string newsId)
@@ -263,7 +259,15 @@ namespace NarrativeGP.News
                 return false;
             }
 
-            return GetRuntimeState(newsId).currentVersion >= GetMaxVersion(newsData);
+            NewsRuntimeState runtimeState = GetRuntimeState(newsId);
+            int maxVersion = GetMaxVersion(newsData);
+
+            if (maxVersion == 0)
+            {
+                return runtimeState.hasBeenOpened;
+            }
+
+            return runtimeState.currentVersion >= maxVersion;
         }
 
         private NewsRuntimeState GetRuntimeState(string newsId)
@@ -303,6 +307,17 @@ namespace NarrativeGP.News
             int clampedVersion = Mathf.Clamp(version, 0, newsData.bodyVersions.Count - 1);
             NewsData.BodyVersionEntry entry = newsData.bodyVersions[clampedVersion];
             return entry != null ? entry.text ?? string.Empty : string.Empty;
+        }
+
+        private string ApplyHighlightMarkup(string sourceText)
+        {
+            if (string.IsNullOrEmpty(sourceText))
+            {
+                return string.Empty;
+            }
+
+            string colorMarkup = ColorUtility.ToHtmlStringRGBA(bodyHighlightColor);
+            return sourceText.Replace("<mark>", $"<mark=#{colorMarkup}>");
         }
 
         private bool TryGetSelectedNews(out NewsData selectedNews)
