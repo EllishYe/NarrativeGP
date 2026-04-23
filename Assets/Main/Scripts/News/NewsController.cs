@@ -110,6 +110,42 @@ namespace NarrativeGP.News
             RefreshListItems();
             RefreshDetailPanel();
             RefreshReadingAreaButton();
+            SyncSectionProgress();
+        }
+
+        public void SyncSectionProgressToGameState(GameState targetGameState)
+        {
+            if (targetGameState == null)
+            {
+                return;
+            }
+
+            int currentDay = Mathf.Max(1, targetGameState.CurrentDay);
+            bool hasUnreadNewsToday = false;
+
+            foreach (NewsData newsData in newsItems)
+            {
+                if (newsData == null || string.IsNullOrWhiteSpace(newsData.id))
+                {
+                    continue;
+                }
+
+                if (newsData.arrivalDay != currentDay)
+                {
+                    continue;
+                }
+
+                if (!IsNewsCompleted(newsData.id))
+                {
+                    hasUnreadNewsToday = true;
+                    break;
+                }
+            }
+
+            targetGameState.SetSectionDailyProgress(
+                SectionId.News,
+                hasUnreadNewsToday,
+                !hasUnreadNewsToday);
         }
 
         private void BuildLookups()
@@ -398,6 +434,11 @@ namespace NarrativeGP.News
         private void HandleGameStateChanged()
         {
             RefreshView();
+        }
+
+        private void SyncSectionProgress()
+        {
+            SyncSectionProgressToGameState(gameState);
         }
 
         private static int CompareNewsItems(NewsData left, NewsData right)

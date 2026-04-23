@@ -1797,6 +1797,7 @@ MonoBehaviour:
   gameState: {fileID: 1878978060}
   flowDefinition: {fileID: 11400000, guid: 6d19734733bf59d45a59e3b2286bbde2, type: 2}
   emailsController: {fileID: 1203133488}
+  newsController: {fileID: 1014389531}
 --- !u!1 &447219057
 GameObject:
   m_ObjectHideFlags: 0
@@ -5239,10 +5240,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c9ef64bf8ec0784f88400d1e70391da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NarrativeGP.News.NewsController
+  gameState: {fileID: 1878978060}
   newsItems:
   - id: 01
     listTitle: Title01
     displayTitle: Title01
+    arrivalDay: 1
+    sortOrder: 0
     image: {fileID: -6800377276218365747, guid: 2c25555d4fa3cd74ca5aaecb492c2b8c, type: 3}
     bodyVersions:
     - text: This is just a test1.
@@ -5252,6 +5256,8 @@ MonoBehaviour:
   - id: 02
     listTitle: Title02
     displayTitle: Title02
+    arrivalDay: 2
+    sortOrder: 0
     image: {fileID: -6800377276218365747, guid: 2c25555d4fa3cd74ca5aaecb492c2b8c, type: 3}
     bodyVersions:
     - text: This is just a test1.
@@ -5259,6 +5265,8 @@ MonoBehaviour:
   - id: 03
     listTitle: Title03
     displayTitle: Title03
+    arrivalDay: 3
+    sortOrder: 0
     image: {fileID: -6800377276218365747, guid: 2c25555d4fa3cd74ca5aaecb492c2b8c, type: 3}
     bodyVersions:
     - text: This is just a test1.
@@ -5268,6 +5276,7 @@ MonoBehaviour:
   articleImage: {fileID: 2005999797}
   bodyText: {fileID: 563999807}
   readingAreaButton: {fileID: 1014389532}
+  bodyHighlightColor: {r: 1, g: 1, b: 0.35, a: 0.75}
   runtimeStates: []
 --- !u!114 &1014389532
 MonoBehaviour:
@@ -6240,7 +6249,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1804076606}
   m_Direction: 0
   m_Value: 0
-  m_Size: 1
+  m_Size: 0.99999994
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -7065,8 +7074,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1999782064}
   m_HandleRect: {fileID: 1999782063}
   m_Direction: 0
-  m_Value: 1
-  m_Size: 0.9999999
+  m_Value: 0
+  m_Size: 0.99999976
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
