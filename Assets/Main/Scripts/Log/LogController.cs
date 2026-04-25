@@ -155,6 +155,7 @@ namespace NarrativeGP.Logs
                 return;
             }
 
+            StopActiveSaveSequence();
             saveSequenceCoroutine = StartCoroutine(RunSaveSequence());
         }
 
@@ -222,7 +223,7 @@ namespace NarrativeGP.Logs
         {
             isSaving = true;
             SetFeedbackText(successFeedbackText);
-            yield return new WaitForSeconds(saveDelaySeconds);
+            yield return new WaitForSecondsRealtime(saveDelaySeconds);
 
             GetOrCreateRuntimeState(GetCurrentDay()).isSaved = true;
             SyncSectionProgress();
