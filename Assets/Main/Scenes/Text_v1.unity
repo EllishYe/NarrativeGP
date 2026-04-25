@@ -2120,6 +2120,7 @@ MonoBehaviour:
   flowDefinition: {fileID: 11400000, guid: 6d19734733bf59d45a59e3b2286bbde2, type: 2}
   deskWorkdayController: {fileID: 571542517}
   emailsController: {fileID: 1203133488}
+  logController: {fileID: 607558597}
   newsController: {fileID: 1014389531}
 --- !u!1 &447219057
 GameObject:
@@ -2333,6 +2334,56 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 454795123}
   m_CullTransparentMesh: 1
+--- !u!1 &463280029
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 463280030}
+  - component: {fileID: 463280031}
+  m_Layer: 5
+  m_Name: DayTransition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &463280030
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 463280029}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1555080736}
+  m_Father: {fileID: 853885963}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &463280031
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 463280029}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99fbc353e8cd9904fb0844978690a55c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Show_Day_Transition
+  GameObject: {fileID: 1555080735}
 --- !u!1 &463467180
 GameObject:
   m_ObjectHideFlags: 0
@@ -3902,15 +3953,150 @@ MonoBehaviour:
         text: soon.
         options: []
         correctIndex: 0
-  - day: 1
-    sentences: []
+  - day: 2
+    sentences:
+    - rawText: 'Old archive keeps syncing. Evan said Ryan is [ (gone)/fired / transferred
+        / promoted ]. Pick up his tasks. '
+      segments:
+      - segmentType: 0
+        text: Old
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: archive
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: keeps
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: syncing.
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: Evan
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: said
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: Ryan
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: is
+        options: []
+        correctIndex: 0
+      - segmentType: 1
+        text: 
+        options:
+        - gone
+        - fired
+        - transferred
+        - promoted
+        correctIndex: 0
+      - segmentType: 0
+        text: .
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: Pick
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: up
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: his
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: tasks.
+        options: []
+        correctIndex: 0
+    - rawText: Shaw emailed me. Says the old emails from Reviewers will [ (sync back)
+        / arrive fresh / be deleted / stay locked] soon.
+      segments:
+      - segmentType: 0
+        text: Shaw
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: emailed
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: me.
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: Says
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: the
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: old
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: emails
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: from
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: Reviewers
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: will
+        options: []
+        correctIndex: 0
+      - segmentType: 1
+        text: 
+        options:
+        - sync back
+        - arrive fresh
+        - be deleted
+        - stay locked
+        correctIndex: 0
+      - segmentType: 0
+        text: soon.
+        options: []
+        correctIndex: 0
   logContentRoot: {fileID: 1192418471}
   sentencePrefab: {fileID: 6992638579400709617, guid: ef93e4a9310c35144ae9c87b4caa833c, type: 3}
   textSegmentPrefab: {fileID: 2593695272574332519, guid: f91ccdb98768ca940a3b8b7fd1cbf8e3, type: 3}
   blankSegmentPrefab: {fileID: 8439349336803334692, guid: d76e4cb7cf24cff408bd2e0e4325f5c8, type: 3}
   feedbackText: {fileID: 1295275608}
+  saveDelaySeconds: 5
   mismatchFeedbackText: Entries do not match today's records
   successFeedbackText: Saving..Synchronizing...
+  onSaveSequenceCompleted:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 463280031}
+        m_TargetAssemblyTypeName: Show_Day_Transition, Assembly-CSharp
+        m_MethodName: Show
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  runtimeStates: []
 --- !u!1 &643571906
 GameObject:
   m_ObjectHideFlags: 0
@@ -5288,6 +5474,7 @@ RectTransform:
   - {fileID: 1019821898}
   - {fileID: 1022047528}
   - {fileID: 57983898}
+  - {fileID: 463280030}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -10309,6 +10496,81 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -150}
   m_SizeDelta: {x: 800, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1555080735
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1555080736}
+  - component: {fileID: 1555080738}
+  - component: {fileID: 1555080737}
+  m_Layer: 5
+  m_Name: BG
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &1555080736
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1555080735}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 463280030}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1555080737
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1555080735}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1555080738
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1555080735}
+  m_CullTransparentMesh: 1
 --- !u!1 &1561798568
 GameObject:
   m_ObjectHideFlags: 0

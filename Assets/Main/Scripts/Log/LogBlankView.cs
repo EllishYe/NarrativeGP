@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace NarrativeGP.Logs
 {
@@ -10,20 +11,24 @@ namespace NarrativeGP.Logs
         [SerializeField] private string placeholderText = "Select...";
 
         private int correctIndex;
+        private UnityAction<int> valueChangedCallback;
 
         private void Reset()
         {
             dropdown = GetComponent<TMP_Dropdown>();
         }
 
-        public void Bind(List<string> options, int nextCorrectIndex)
+        public void Bind(List<string> options, int nextCorrectIndex, int initialValue, UnityAction<int> onValueChanged)
         {
             correctIndex = nextCorrectIndex;
+            valueChangedCallback = onValueChanged;
 
             if (dropdown == null)
             {
                 return;
             }
+
+            dropdown.onValueChanged.RemoveAllListeners();
 
             dropdown.ClearOptions();
 
@@ -41,8 +46,9 @@ namespace NarrativeGP.Logs
             }
 
             dropdown.AddOptions(optionData);
-            dropdown.value = 0;
+            dropdown.SetValueWithoutNotify(Mathf.Clamp(initialValue, 0, optionData.Count - 1));
             dropdown.RefreshShownValue();
+            dropdown.onValueChanged.AddListener(HandleValueChanged);
         }
 
         public bool IsCorrect()
@@ -58,6 +64,11 @@ namespace NarrativeGP.Logs
             }
 
             return dropdown.value - 1 == correctIndex;
+        }
+
+        private void HandleValueChanged(int value)
+        {
+            valueChangedCallback?.Invoke(value);
         }
     }
 }

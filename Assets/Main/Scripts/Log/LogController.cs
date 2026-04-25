@@ -3,11 +3,20 @@ using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 namespace NarrativeGP.Logs
 {
     public class LogController : MonoBehaviour
     {
+        [System.Serializable]
+        private class LogDayRuntimeState
+        {
+            public int day;
+            public List<int> blankValues = new();
+            public bool isSaved;
+        }
+
         [Header("Dependencies")]
         [SerializeField] private GameState gameState;
 
@@ -20,45 +29,71 @@ namespace NarrativeGP.Logs
         [SerializeField] private TMP_Text textSegmentPrefab;
         [SerializeField] private LogBlankView blankSegmentPrefab;
         [SerializeField] private TMP_Text feedbackText;
-        [SerializeField] private float saveDelaySeconds = 5f;
+        [SerializeField] private float saveDelaySeconds = 3f;
         [SerializeField] private string mismatchFeedbackText = "Entries do not match today's records";
         [SerializeField] private string successFeedbackText = "Saving...\nSynchronizing...";
 
         [Header("Events")]
         [SerializeField] private UnityEvent onSaveSequenceCompleted;
 
+        [Header("Runtime State")]
+        [SerializeField] private List<LogDayRuntimeState> runtimeStates = new();
+
         private readonly List<LogBlankView> spawnedBlankViews = new();
         private readonly List<GameObject> spawnedSentenceObjects = new();
+        private readonly Dictionary<int, LogDayRuntimeState> runtimeLookup = new();
         private Coroutine saveSequenceCoroutine;
         private bool isSaving;
+        private int loadedDay = -1;
 
         private void Reset()
         {
             gameState = FindFirstObjectByType<GameState>();
         }
 
+        private void Awake()
+        {
+            BuildRuntimeLookup();
+        }
+
         private void OnEnable()
         {
+            if (gameState != null)
+            {
+                gameState.StateChanged += HandleGameStateChanged;
+            }
+
             RebuildCurrentDayLog();
         }
 
         private void OnDisable()
         {
             StopActiveSaveSequence();
+
+            if (gameState != null)
+            {
+                gameState.StateChanged -= HandleGameStateChanged;
+            }
         }
 
         [ContextMenu("Rebuild Current Day Log")]
         public void RebuildCurrentDayLog()
         {
             StopActiveSaveSequence();
+            SetContentRootVisible(false);
             ClearGeneratedContent();
 
             LogDayData currentDayData = GetCurrentDayData();
+            loadedDay = GetCurrentDay();
             if (currentDayData == null || logContentRoot == null || sentencePrefab == null)
             {
                 SetFeedbackText(string.Empty);
+                SetContentRootVisible(true);
                 return;
             }
+
+            LogDayRuntimeState runtimeState = GetOrCreateRuntimeState(loadedDay);
+            int blankIndex = 0;
 
             foreach (LogSentenceData sentenceData in currentDayData.sentences)
             {
@@ -83,11 +118,15 @@ namespace NarrativeGP.Logs
                         continue;
                     }
 
-                    CreateBlankSegment(sentenceRoot, segmentData);
+                    EnsureRuntimeBlankSlot(runtimeState, blankIndex);
+                    CreateBlankSegment(sentenceRoot, segmentData, blankIndex, runtimeState.blankValues[blankIndex]);
+                    blankIndex++;
                 }
             }
 
             SetFeedbackText(string.Empty);
+            ForceImmediateLayout();
+            SetContentRootVisible(true);
         }
 
         public bool AreAllEntriesCorrect()
@@ -146,7 +185,7 @@ namespace NarrativeGP.Logs
             }
 
             LogBlankView blankInstance = Instantiate(blankSegmentPrefab, sentenceRoot);
-            blankInstance.Bind(segmentData.options, segmentData.correctIndex);
+            blankInstance.Bind(segmentData.options, segmentData.correctIndex, 0, null);
             spawnedBlankViews.Add(blankInstance);
         }
 
@@ -166,7 +205,7 @@ namespace NarrativeGP.Logs
 
         private LogDayData GetCurrentDayData()
         {
-            int currentDay = gameState != null ? Mathf.Max(1, gameState.CurrentDay) : 1;
+            int currentDay = GetCurrentDay();
 
             foreach (LogDayData dayData in dayLogs)
             {
@@ -185,6 +224,8 @@ namespace NarrativeGP.Logs
             SetFeedbackText(successFeedbackText);
             yield return new WaitForSeconds(saveDelaySeconds);
 
+            GetOrCreateRuntimeState(GetCurrentDay()).isSaved = true;
+            SyncSectionProgress();
             isSaving = false;
             saveSequenceCoroutine = null;
             Debug.Log("Log save sequence completed.");
@@ -200,6 +241,123 @@ namespace NarrativeGP.Logs
             }
 
             isSaving = false;
+        }
+
+        private void HandleGameStateChanged()
+        {
+            int currentDay = GetCurrentDay();
+            if (currentDay != loadedDay)
+            {
+                RebuildCurrentDayLog();
+                return;
+            }
+
+            SyncSectionProgress();
+        }
+
+        private void BuildRuntimeLookup()
+        {
+            runtimeLookup.Clear();
+
+            foreach (LogDayRuntimeState runtimeState in runtimeStates)
+            {
+                if (runtimeState != null)
+                {
+                    runtimeLookup[runtimeState.day] = runtimeState;
+                }
+            }
+        }
+
+        private LogDayRuntimeState GetOrCreateRuntimeState(int day)
+        {
+            if (runtimeLookup.TryGetValue(day, out LogDayRuntimeState runtimeState))
+            {
+                return runtimeState;
+            }
+
+            runtimeState = new LogDayRuntimeState
+            {
+                day = day
+            };
+
+            runtimeStates.Add(runtimeState);
+            runtimeLookup.Add(day, runtimeState);
+            return runtimeState;
+        }
+
+        private static void EnsureRuntimeBlankSlot(LogDayRuntimeState runtimeState, int blankIndex)
+        {
+            while (runtimeState.blankValues.Count <= blankIndex)
+            {
+                runtimeState.blankValues.Add(0);
+            }
+        }
+
+        private void CreateBlankSegment(Transform sentenceRoot, LogSegmentData segmentData, int blankIndex, int initialValue)
+        {
+            if (blankSegmentPrefab == null)
+            {
+                return;
+            }
+
+            LogBlankView blankInstance = Instantiate(blankSegmentPrefab, sentenceRoot);
+            blankInstance.Bind(
+                segmentData.options,
+                segmentData.correctIndex,
+                initialValue,
+                value => UpdateRuntimeBlankValue(blankIndex, value));
+            spawnedBlankViews.Add(blankInstance);
+        }
+
+        private void UpdateRuntimeBlankValue(int blankIndex, int value)
+        {
+            LogDayRuntimeState runtimeState = GetOrCreateRuntimeState(GetCurrentDay());
+            EnsureRuntimeBlankSlot(runtimeState, blankIndex);
+            runtimeState.blankValues[blankIndex] = value;
+        }
+
+        private int GetCurrentDay()
+        {
+            return gameState != null ? Mathf.Max(1, gameState.CurrentDay) : 1;
+        }
+
+        public void SyncSectionProgressToGameState(GameState targetGameState)
+        {
+            if (targetGameState == null)
+            {
+                return;
+            }
+
+            int currentDay = Mathf.Max(1, targetGameState.CurrentDay);
+            LogDayRuntimeState runtimeState = GetOrCreateRuntimeState(currentDay);
+            bool hasIncompleteLog = !runtimeState.isSaved;
+
+            targetGameState.SetSectionDailyProgress(
+                SectionId.Log,
+                hasIncompleteLog,
+                !hasIncompleteLog);
+        }
+
+        private void SyncSectionProgress()
+        {
+            SyncSectionProgressToGameState(gameState);
+        }
+
+        private void SetContentRootVisible(bool visible)
+        {
+            if (logContentRoot != null)
+            {
+                logContentRoot.gameObject.SetActive(visible);
+            }
+        }
+
+        private void ForceImmediateLayout()
+        {
+            if (logContentRoot is RectTransform rectTransform)
+            {
+                LayoutRebuilder.ForceRebuildLayoutImmediate(rectTransform);
+                Canvas.ForceUpdateCanvases();
+            }
         }
     }
 }
