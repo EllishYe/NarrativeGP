@@ -1,6 +1,9 @@
 using System.Collections;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.UI;
 
 namespace NarrativeGP.Ending
 {
@@ -16,9 +19,17 @@ namespace NarrativeGP.Ending
         [SerializeField] private TMP_Text staticTextSecondary;
         [SerializeField] private TMP_Text progressText;
 
+        [Header("Slideshow UI")]
+        [SerializeField] private Image slideshowImage;
+        [SerializeField] private List<Sprite> slideshowSprites = new();
+
         [Header("Timing")]
         [SerializeField] private float blueScreenDuration = 3f;
         [SerializeField] private float blackScreenDuration = 3f;
+        [SerializeField] private float slideDuration = 2f;
+
+        [Header("Events")]
+        [SerializeField] private UnityEvent onSlideshowStarted;
 
         private Coroutine activeSequence;
 
@@ -55,9 +66,10 @@ namespace NarrativeGP.Ending
             SetStageVisibility(showBlue: false, showBlack: true, showSlideshow: false);
             yield return new WaitForSecondsRealtime(blackScreenDuration);
 
-            SetStageVisibility(showBlue: false, showBlack: false, showSlideshow: false);
-            activeSequence = null;
             Debug.Log("EndAnim phase 1 complete. Ready for slideshow.");
+            yield return PlaySlideshow();
+
+            activeSequence = null;
         }
 
         private void UpdateProgressText(int percent)
@@ -89,6 +101,33 @@ namespace NarrativeGP.Ending
             {
                 progressText.text = string.Empty;
             }
+        }
+
+        private IEnumerator PlaySlideshow()
+        {
+            if (slideshowSprites == null || slideshowSprites.Count == 0)
+            {
+                SetStageVisibility(showBlue: false, showBlack: false, showSlideshow: false);
+                Debug.Log("EndAnim slideshow finished with no slides.");
+                yield break;
+            }
+
+            SetStageVisibility(showBlue: false, showBlack: false, showSlideshow: true);
+            Debug.Log("EndAnim slideshow started. Triggering BGM event.");
+            onSlideshowStarted?.Invoke();
+
+            for (int i = 0; i < slideshowSprites.Count; i++)
+            {
+                if (slideshowImage != null)
+                {
+                    slideshowImage.sprite = slideshowSprites[i];
+                    slideshowImage.enabled = slideshowSprites[i] != null;
+                }
+
+                yield return new WaitForSecondsRealtime(slideDuration);
+            }
+
+            Debug.Log("EndAnim slideshow complete. Holding on final slide.");
         }
     }
 }

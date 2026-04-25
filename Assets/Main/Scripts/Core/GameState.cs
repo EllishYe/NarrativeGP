@@ -16,7 +16,7 @@ namespace NarrativeGP
             public bool hasUnreadContent;
         }
 
-        [SerializeField] private int currentDay = 1;
+        [SerializeField] private int currentDay = 0;
         [SerializeField] private List<SectionRuntimeState> sectionStates = new();
         [SerializeField] private List<string> activeFlags = new();
 

@@ -2,6 +2,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
+using NarrativeGP.Ending;
 
 namespace NarrativeGP.DayTransition
 {
@@ -31,9 +32,12 @@ namespace NarrativeGP.DayTransition
         [SerializeField] private TMP_Text field1ValueText;
         [SerializeField] private TMP_Text field2LabelText;
         [SerializeField] private TMP_Text field2ValueText;
+        [SerializeField] private Image staticImagePrimary;
+        [SerializeField] private Image staticImageSecondary;
         [SerializeField] private Toggle robotToggle;
         [SerializeField] private TMP_Text checkboxLabelText;
         [SerializeField] private Button signInButton;
+        [SerializeField] private EndAnimController endAnimController;
 
         private SignInScenarioData activeScenario;
         private int currentInputCount;
@@ -43,12 +47,30 @@ namespace NarrativeGP.DayTransition
         {
             gameState = FindFirstObjectByType<GameState>();
             sectionScreenController = FindFirstObjectByType<SectionScreenController>();
+            endAnimController = FindFirstObjectByType<EndAnimController>();
+            if (visualRoot == null && transform.childCount > 0)
+            {
+                visualRoot = transform.GetChild(0).gameObject;
+            }
         }
 
         private void Awake()
         {
+            EnsureDependencies();
+            EnsureVisualRoot();
             SetVisible(false);
             RefreshView();
+        }
+
+        private void Start()
+        {
+            EnsureDependencies();
+            EnsureVisualRoot();
+
+            if (gameState != null && gameState.CurrentDay <= 0)
+            {
+                Show();
+            }
         }
 
         private void Update()
@@ -124,8 +146,17 @@ namespace NarrativeGP.DayTransition
 
             if (activeScenario != null && activeScenario.completionMode == SignInCompletionMode.GoToEndAnim)
             {
-                Debug.Log("SignIn complete. Go to EndAnim.");
                 SetVisible(false);
+
+                if (endAnimController != null)
+                {
+                    endAnimController.PlaySequence();
+                }
+                else
+                {
+                    Debug.Log("SignIn complete. Go to EndAnim.");
+                }
+
                 return;
             }
 
@@ -149,6 +180,8 @@ namespace NarrativeGP.DayTransition
             SetText(field1LabelText, scenario.field1Label);
             SetText(field2LabelText, scenario.field2Label);
             SetText(checkboxLabelText, scenario.checkboxLabel);
+            SetImage(staticImagePrimary, scenario.staticImagePrimary);
+            SetImage(staticImageSecondary, scenario.staticImageSecondary);
 
             int field1VisibleCount = Mathf.Clamp(currentInputCount, 0, scenario.field1TargetText?.Length ?? 0);
             int remainingCount = Mathf.Max(0, currentInputCount - field1VisibleCount);
@@ -192,6 +225,32 @@ namespace NarrativeGP.DayTransition
             }
         }
 
+        private void EnsureDependencies()
+        {
+            if (gameState == null)
+            {
+                gameState = FindFirstObjectByType<GameState>();
+            }
+
+            if (sectionScreenController == null)
+            {
+                sectionScreenController = FindFirstObjectByType<SectionScreenController>();
+            }
+
+            if (endAnimController == null)
+            {
+                endAnimController = FindFirstObjectByType<EndAnimController>();
+            }
+        }
+
+        private void EnsureVisualRoot()
+        {
+            if (visualRoot == null && transform.childCount > 0)
+            {
+                visualRoot = transform.GetChild(0).gameObject;
+            }
+        }
+
         private static string GetVisibleSubstring(string value, int visibleCount)
         {
             if (string.IsNullOrEmpty(value) || visibleCount <= 0)
@@ -209,6 +268,17 @@ namespace NarrativeGP.DayTransition
             {
                 target.text = value ?? string.Empty;
             }
+        }
+
+        private static void SetImage(Image target, Sprite sprite)
+        {
+            if (target == null)
+            {
+                return;
+            }
+
+            target.sprite = sprite;
+            target.enabled = sprite != null;
         }
     }
 }

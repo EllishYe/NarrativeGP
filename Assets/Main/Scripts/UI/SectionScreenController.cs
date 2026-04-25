@@ -31,6 +31,12 @@ namespace NarrativeGP
                 }
             }
 
+            if (gameState != null && gameState.CurrentDay <= 0)
+            {
+                SetAllPanelsActive(false);
+                return;
+            }
+
             OpenSection(defaultSection);
         }
 
@@ -47,14 +53,24 @@ namespace NarrativeGP
                 return;
             }
 
-            foreach (KeyValuePair<SectionId, GameObject> pair in panelLookup)
+            SetAllPanelsActive(false);
+
+            if (panelLookup.TryGetValue(sectionId, out GameObject targetPanel))
             {
-                pair.Value.SetActive(pair.Key == sectionId);
+                targetPanel.SetActive(true);
             }
 
             if (gameState != null)
             {
                 gameState.MarkSectionOpened(sectionId);
+            }
+        }
+
+        private void SetAllPanelsActive(bool active)
+        {
+            foreach (KeyValuePair<SectionId, GameObject> pair in panelLookup)
+            {
+                pair.Value.SetActive(active);
             }
         }
     }

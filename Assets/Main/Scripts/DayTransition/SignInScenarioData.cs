@@ -1,4 +1,5 @@
 using System;
+using UnityEngine;
 
 namespace NarrativeGP.DayTransition
 {
@@ -11,6 +12,8 @@ namespace NarrativeGP.DayTransition
         public string field2Label = "Password";
         public string field2TargetText = "****";
         public string checkboxLabel = "I'm not robot";
+        public Sprite staticImagePrimary;
+        public Sprite staticImageSecondary;
         public int requiredInputCount = 8;
         public SignInCompletionMode completionMode = SignInCompletionMode.AdvanceDayToAttendance;
     }
