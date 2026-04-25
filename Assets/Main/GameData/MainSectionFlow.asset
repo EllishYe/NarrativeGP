@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7e98fdd261121f419d04797d8ff9f53, type: 3}
   m_Name: MainSectionFlow
   m_EditorClassIdentifier: Assembly-CSharp::NarrativeGP.SectionFlowDefinition
-  daytimeSections: 01000000020000000300000004000000
+  daytimeSections: 01000000030000000200000004000000
   wrapUpSection: 5

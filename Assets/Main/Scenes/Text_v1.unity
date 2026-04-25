@@ -6317,7 +6317,7 @@ GameObject:
   - component: {fileID: 571542516}
   - component: {fileID: 571542517}
   m_Layer: 5
-  m_Name: 2_Desk_Panel
+  m_Name: 3_Desk_Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12580,8 +12580,8 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 854160609}
-  - {fileID: 571542513}
   - {fileID: 1203133485}
+  - {fileID: 571542513}
   - {fileID: 1014389528}
   - {fileID: 607558594}
   m_Father: {fileID: 853885963}
@@ -12623,8 +12623,8 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 571467749}
-  - {fileID: 1561798569}
   - {fileID: 2008881821}
+  - {fileID: 1561798569}
   - {fileID: 1939337571}
   - {fileID: 554906217}
   m_Father: {fileID: 853885963}
@@ -15252,7 +15252,7 @@ GameObject:
   - component: {fileID: 1203133486}
   - component: {fileID: 1203133488}
   m_Layer: 5
-  m_Name: 3_Emails_Panel
+  m_Name: 2_Emails_Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15579,7 +15579,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1224426726
 RectTransform:
   m_ObjectHideFlags: 0

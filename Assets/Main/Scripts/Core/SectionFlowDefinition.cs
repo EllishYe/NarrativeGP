@@ -9,8 +9,8 @@ namespace NarrativeGP
         [SerializeField] private List<SectionId> daytimeSections = new()
         {
             SectionId.Attendance,
-            SectionId.Desk,
             SectionId.Emails,
+            SectionId.Desk,
             SectionId.News
         };
 

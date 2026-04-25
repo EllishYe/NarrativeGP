@@ -25,7 +25,7 @@ Then create one `SectionIconPresenter` per bottom icon.
 ## Day Rules Implemented
 
 - **Day 1**: only the first incomplete section is interactable
-- `Attendance -> Desk -> Emails -> News -> Log`
+- `Attendance -> Emails -> Desk -> News -> Log`
 - **Day 2+**: `Attendance`, `Desk`, `Emails`, `News` are always interactable
 - **Day 2+**: `Log` unlocks only after the other four sections are completed for the current day
 
