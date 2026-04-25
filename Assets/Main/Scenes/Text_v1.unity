@@ -1851,8 +1851,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 476, y: 0}
-  m_SizeDelta: {x: 300, y: 600}
+  m_AnchoredPosition: {x: 552, y: 0}
+  m_SizeDelta: {x: 500, y: 600}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &213955850
 MonoBehaviour:
@@ -2292,7 +2292,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0.000024632707}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 33.52}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &280875093
 MonoBehaviour:
@@ -3632,7 +3632,7 @@ RectTransform:
   m_Father: {fileID: 1206133300}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0.99999994, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -6805,9 +6805,9 @@ RectTransform:
   m_Father: {fileID: 404906425}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
-  m_AnchorMax: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 20, y: 0}
+  m_SizeDelta: {x: 20, y: -17}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &595248856
 MonoBehaviour:
@@ -7895,9 +7895,9 @@ RectTransform:
   m_Father: {fileID: 1712905700}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 20, y: -17}
+  m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &663794967
 MonoBehaviour:
@@ -7943,7 +7943,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1879017251}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.61
+  m_Size: 0.9575001
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -8735,7 +8735,7 @@ RectTransform:
   m_Father: {fileID: 892580042}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -9987,7 +9987,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 300, y: 600}
+  m_SizeDelta: {x: 500, y: 600}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &800776043
 MonoBehaviour:
@@ -12384,7 +12384,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1014389528
 RectTransform:
   m_ObjectHideFlags: 0
@@ -12460,33 +12460,124 @@ MonoBehaviour:
   gameState: {fileID: 1878978060}
   newsItems:
   - id: 01
-    listTitle: Title01
-    displayTitle: Title01
+    listTitle: '"The Ghost in the Loop": A Fruit Fly Brain Now Lives Inside a Computer'
+    displayTitle: '"The Ghost in the Loop": A Fruit Fly Brain Now Lives Inside a
+      Computer'
     arrivalDay: 1
     sortOrder: 0
     image: {fileID: -6800377276218365747, guid: 2c25555d4fa3cd74ca5aaecb492c2b8c, type: 3}
     bodyVersions:
-    - text: This is just a test1.
-    - text: <mark>This</mark> is just a test1.
-    - text: <mark>This</mark> is <mark>just</mark> a test1.
-    - text: <mark>This</mark> is <mark>just</mark> a <mark>test1</mark>.
+    - text: "Researchers this week copied a fruit fly's entire brain into a virtual
+        body \u2014 and it works. Building on research from 3 years ago, the digital
+        fly now moves, eats, and responds like a real one. \"It can react, but it
+        cannot learn,\" said one researcher. The project, funded by NeuroMechA, is
+        targeting \"larger organisms\" next."
+    - text: "Researchers this week <mark>copied a fruit fly's entire brain into a
+        virtual body</mark> \u2014 and it works. Building on research from 3 years
+        ago, the digital fly now moves, eats, and responds like a real one. \"It
+        can react, but it cannot learn,\" said one researcher. The project, funded
+        by NeuroMechA, is targeting \"larger organisms\" next."
+    - text: "Researchers this week <mark>copied a fruit fly's entire brain into a
+        virtual body</mark> \u2014 and it works. Building on research from 3 years
+        ago, the digital fly now moves, eats, and responds like a real one. \"It
+        can react, but it cannot learn,\" said one researcher. The project, funded
+        by NeuroMechA, is <mark>targeting \"larger organisms\" next</mark>."
   - id: 02
-    listTitle: Title02
-    displayTitle: Title02
-    arrivalDay: 2
+    listTitle: NeuroMechA Responds to Employee Death at Headquarters
+    displayTitle: NeuroMechA Responds to Employee Death at Headquarters
+    arrivalDay: 1
     sortOrder: 0
     image: {fileID: -6800377276218365747, guid: 2c25555d4fa3cd74ca5aaecb492c2b8c, type: 3}
     bodyVersions:
-    - text: This is just a test1.
-    - text: <mark>This</mark> is just a test1.
+    - text: Following last week's sudden death of an employee at NeuroMechA's headquarters,
+        the company's PR team attributed the incident to "pre-existing personal health
+        conditions." A spokesperson stated that the company has "fully complied with
+        all labor regulations" and will not be commenting further on internal matters.
+    - text: Following last week's sudden death of an employee at NeuroMechA's headquarters,
+        the company's PR team attributed the incident to <mark>"pre-existing personal
+        health conditions."</mark> A spokesperson stated that the company has "fully
+        complied with all labor regulations" and will not be commenting further on
+        internal matters.
+    - text: Following last week's sudden death of an employee at NeuroMechA's headquarters,
+        the company's PR team attributed the incident to <mark>"pre-existing personal
+        health conditions."</mark> A spokesperson stated that the company has <mark>"fully
+        complied with all labor regulations"</mark> and will not be commenting further
+        on internal matters.
   - id: 03
-    listTitle: Title03
-    displayTitle: Title03
-    arrivalDay: 3
+    listTitle: Former NeuroMechA Engineer Sues Over Years of Forced Overtime
+    displayTitle: "Former \u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588
+      Engineer Sues Over Years of \u2588\u2588\u2588\u2588\u2588\u2588 Overtime"
+    arrivalDay: 1
     sortOrder: 0
     image: {fileID: -6800377276218365747, guid: 2c25555d4fa3cd74ca5aaecb492c2b8c, type: 3}
     bodyVersions:
-    - text: This is just a test1.
+    - text: "A former engineer at \u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588,
+        identified only as \u2588\u2588\u2588\u2588, has filed a \u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588
+        against the company, citing years of \u2588\u2588\u2588\u2588\u2588\u2588
+        overtime that destroyed his health. \"I watched people around me \u2588\u2588\u2588\u2588\u2588
+        \u2588\u2588\u2588\u2588\u2588,\" he told Sentinel Daily. Other former employees
+        are reportedly preparing to join the case."
+    - text: "A former engineer at \u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588,
+        identified only as \u2588\u2588\u2588\u2588, has filed a \u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588
+        against the company, citing years of \u2588\u2588\u2588\u2588\u2588\u2588
+        <mark>overtime</mark> that destroyed his health. \"I watched people around
+        me \u2588\u2588\u2588\u2588\u2588 \u2588\u2588\u2588\u2588\u2588,\" he told
+        Sentinel Daily. Other former employees are reportedly preparing to join the
+        case."
+  - id: 04
+    listTitle: 'Ryan on NeuroMechA Death: "Ben Was a Good Man"'
+    displayTitle: "\u2588\u2588\u2588\u2588 on \u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588
+      Death: \"\u2588\u2588\u2588 \u2588\u2588\u2588 \u2588 Good Man\""
+    arrivalDay: 1
+    sortOrder: 0
+    image: {fileID: -6800377276218365747, guid: 2c25555d4fa3cd74ca5aaecb492c2b8c, type: 3}
+    bodyVersions:
+    - text: "In a follow-up \u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588, former
+        engineer \u2588\u2588\u2588\u2588 was asked about the \u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588
+        who died last week. His voice broke. \"His name was \u2588\u2588\u2588. He
+        was a good man. He \u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588't have
+        died like that.\" \u2588\u2588\u2588\u2588 declined to say more, but added:
+        \"I hope someone \u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588
+        him. The \u2588\u2588\u2588\u2588\u2588\u2588\u2588 won't.\""
+    - text: "In a follow-up \u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588, former
+        engineer \u2588\u2588\u2588\u2588 was asked about the \u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588
+        <mark>who died last week</mark>. His voice broke. \"His name was \u2588\u2588\u2588.
+        He was a good man. He \u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588't
+        have died like that.\" \u2588\u2588\u2588\u2588 declined to say more, but
+        added: \"I hope someone \u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588
+        him. The \u2588\u2588\u2588\u2588\u2588\u2588\u2588 won't.\""
+  - id: 05
+    listTitle: 'NeuroMechA Unveils "Cybernetic Immortality": A New Chapter for Humanity'
+    displayTitle: 404 Error
+    arrivalDay: 1
+    sortOrder: 0
+    image: {fileID: -6800377276218365747, guid: 2c25555d4fa3cd74ca5aaecb492c2b8c, type: 3}
+    bodyVersions:
+    - text: 'The server returned an invalid response.
+
+        Your network access
+        has been restricted per compliance policy.
+
+        Please contact your
+        administrator.
+
+        [ ERROR CODE: NMA-0722-OUT ] '
+  - id: 06
+    listTitle: 'Hundreds Protest Outside NeuroMechA: "Not On Human Minds"'
+    displayTitle: 404 Error
+    arrivalDay: 1
+    sortOrder: 0
+    image: {fileID: -6800377276218365747, guid: 2c25555d4fa3cd74ca5aaecb492c2b8c, type: 3}
+    bodyVersions:
+    - text: 'The server returned an invalid response.
+
+        Your network access
+        has been restricted per compliance policy.
+
+        Please contact your
+        administrator.
+
+        [ ERROR CODE: NMA-0722-OUT ] '
   newsListContent: {fileID: 736069664}
   newsItemPrefab: {fileID: -7597003984608452402, guid: ec3419554cf93ff4da0498e347170eb8, type: 3}
   displayTitleText: {fileID: 526723781}
@@ -14472,9 +14563,9 @@ RectTransform:
   m_Father: {fileID: 1712905700}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -17, y: 20}
+  m_SizeDelta: {x: 0, y: 20}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &1141043309
 MonoBehaviour:
@@ -15257,7 +15348,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1203133485
 RectTransform:
   m_ObjectHideFlags: 0
@@ -15579,7 +15670,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1224426726
 RectTransform:
   m_ObjectHideFlags: 0
@@ -15895,9 +15986,9 @@ RectTransform:
   m_Father: {fileID: 800776042}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -17, y: -17}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1256774914
 MonoBehaviour:
@@ -16001,9 +16092,9 @@ RectTransform:
   m_Father: {fileID: 1712905700}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -17, y: -17}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1292535541
 MonoBehaviour:
@@ -16577,9 +16668,9 @@ RectTransform:
   m_Father: {fileID: 800776042}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -17, y: 20}
+  m_SizeDelta: {x: 0, y: 20}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &1335728907
 MonoBehaviour:
@@ -16624,7 +16715,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1999782064}
   m_HandleRect: {fileID: 1999782063}
   m_Direction: 0
-  m_Value: 0
+  m_Value: 1
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -18022,7 +18113,7 @@ RectTransform:
   m_Father: {fileID: 1678739754}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -18867,9 +18958,9 @@ RectTransform:
   m_Father: {fileID: 95211112}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
-  m_AnchorMax: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 20, y: 0}
+  m_SizeDelta: {x: 20, y: -17}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &1562087280
 MonoBehaviour:
@@ -19490,7 +19581,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 300}
+  m_SizeDelta: {x: 0, y: 400}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &1606222285
 GameObject:
@@ -19993,7 +20084,7 @@ RectTransform:
   m_Father: {fileID: 2139817456}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -20792,9 +20883,9 @@ RectTransform:
   m_Father: {fileID: 404906425}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 20}
+  m_SizeDelta: {x: -17, y: 20}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &1694824020
 MonoBehaviour:
@@ -21058,8 +21149,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -450}
-  m_SizeDelta: {x: 700, y: 200}
+  m_AnchoredPosition: {x: 0, y: -346}
+  m_SizeDelta: {x: 700, y: 400}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1712905701
 MonoBehaviour:
@@ -21484,9 +21575,9 @@ RectTransform:
   m_Father: {fileID: 95211112}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 20}
+  m_SizeDelta: {x: -17, y: 20}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &1742048760
 MonoBehaviour:
@@ -22035,9 +22126,9 @@ RectTransform:
   m_Father: {fileID: 95211112}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: -17, y: -17}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1793055402
 MonoBehaviour:
@@ -22123,7 +22214,7 @@ RectTransform:
   m_Father: {fileID: 2027768570}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0.99999994, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -22745,8 +22836,8 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 295022304}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.39}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -24846,7 +24937,7 @@ RectTransform:
   m_Father: {fileID: 1736493769}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0.99999976, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -24905,7 +24996,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2005999795
 RectTransform:
   m_ObjectHideFlags: 0
@@ -26160,7 +26251,7 @@ RectTransform:
   m_Father: {fileID: 376870548}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -26950,9 +27041,9 @@ RectTransform:
   m_Father: {fileID: 404906425}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: -17, y: -17}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &2117149177
 MonoBehaviour:
@@ -27040,9 +27131,9 @@ RectTransform:
   m_Father: {fileID: 800776042}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 20, y: -17}
+  m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &2119418523
 MonoBehaviour:
@@ -27447,7 +27538,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7186449025730863954, guid: ec3419554cf93ff4da0498e347170eb8, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 280
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7186449025730863954, guid: ec3419554cf93ff4da0498e347170eb8, type: 3}
       propertyPath: m_SizeDelta.y
@@ -27483,7 +27574,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7186449025730863954, guid: ec3419554cf93ff4da0498e347170eb8, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 141.5
+      value: 241.5
       objectReference: {fileID: 0}
     - target: {fileID: 7186449025730863954, guid: ec3419554cf93ff4da0498e347170eb8, type: 3}
       propertyPath: m_AnchoredPosition.y
