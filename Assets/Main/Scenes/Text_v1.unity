@@ -7051,7 +7051,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &607558594
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7129,71 +7129,35 @@ MonoBehaviour:
   dayLogs:
   - day: 1
     sentences:
-    - rawText: 'Old archive keeps syncing. Evan said Ryan is [ (gone)/fired / transferred
-        / promoted ]. Pick up his tasks. '
+    - rawText: 17/07/2025
       segments:
       - segmentType: 0
-        text: Old
+        text: 17/07/2025
+        options: []
+        correctIndex: 0
+    - rawText: Transferred to [ (Verifiers) / Reviewers / Annotators] today.
+      segments:
+      - segmentType: 0
+        text: Transferred
         options: []
         correctIndex: 0
       - segmentType: 0
-        text: archive
-        options: []
-        correctIndex: 0
-      - segmentType: 0
-        text: keeps
-        options: []
-        correctIndex: 0
-      - segmentType: 0
-        text: syncing.
-        options: []
-        correctIndex: 0
-      - segmentType: 0
-        text: Evan
-        options: []
-        correctIndex: 0
-      - segmentType: 0
-        text: said
-        options: []
-        correctIndex: 0
-      - segmentType: 0
-        text: Ryan
-        options: []
-        correctIndex: 0
-      - segmentType: 0
-        text: is
+        text: to
         options: []
         correctIndex: 0
       - segmentType: 1
         text: 
         options:
-        - gone
-        - fired
-        - transferred
-        - promoted
+        - Verifiers
+        - Reviewers
+        - Annotators
         correctIndex: 0
       - segmentType: 0
-        text: .
+        text: today.
         options: []
         correctIndex: 0
-      - segmentType: 0
-        text: Pick
-        options: []
-        correctIndex: 0
-      - segmentType: 0
-        text: up
-        options: []
-        correctIndex: 0
-      - segmentType: 0
-        text: his
-        options: []
-        correctIndex: 0
-      - segmentType: 0
-        text: tasks.
-        options: []
-        correctIndex: 0
-    - rawText: Shaw emailed me. Says the old emails from Reviewers will [ (sync back)
-        / arrive fresh / be deleted / stay locked] soon.
+    - rawText: Shaw emailed me. Says the old emails from Reviewers will [  stay locked
+        /be deleted/(sync back) ] soon.
       segments:
       - segmentType: 0
         text: Shaw
@@ -7238,30 +7202,242 @@ MonoBehaviour:
       - segmentType: 1
         text: 
         options:
-        - sync back
-        - arrive fresh
-        - be deleted
         - stay locked
-        correctIndex: 0
+        - be deleted
+        - sync back
+        correctIndex: 2
       - segmentType: 0
         text: soon.
+        options: []
+        correctIndex: 0
+    - rawText: '"Select all images with [ products/(animals)/faces  ]." Verify. Next.
+        Select all. Verify. Next.'
+      segments:
+      - segmentType: 0
+        text: '"Select'
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: all
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: images
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: with
+        options: []
+        correctIndex: 0
+      - segmentType: 1
+        text: 
+        options:
+        - products
+        - animals
+        - faces
+        correctIndex: 1
+      - segmentType: 0
+        text: ."
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: Verify.
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: Next.
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: Select
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: all.
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: Verify.
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: Next.
+        options: []
+        correctIndex: 0
+    - rawText: Select. Verify. Next.
+      segments:
+      - segmentType: 0
+        text: Select.
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: Verify.
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: Next.
+        options: []
+        correctIndex: 0
+    - rawText: Read a headline at lunch. They put a [ (fruit fly)/mouse/human ] brain
+        inside a computer. It moves. It eats.
+      segments:
+      - segmentType: 0
+        text: Read
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: a
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: headline
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: at
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: lunch.
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: They
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: put
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: a
+        options: []
+        correctIndex: 0
+      - segmentType: 1
+        text: 
+        options:
+        - fruit fly
+        - mouse
+        - human
+        correctIndex: 0
+      - segmentType: 0
+        text: brain
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: inside
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: a
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: computer.
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: It
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: moves.
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: It
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: eats.
+        options: []
+        correctIndex: 0
+    - rawText: Weird times.
+      segments:
+      - segmentType: 0
+        text: Weird
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: times.
         options: []
         correctIndex: 0
   - day: 2
     sentences:
-    - rawText: 'Old archive keeps syncing. Evan said Ryan is [ (gone)/fired / transferred
-        / promoted ]. Pick up his tasks. '
+    - rawText: 18/07/2025
       segments:
       - segmentType: 0
-        text: Old
+        text: 18/07/2025
+        options: []
+        correctIndex: 0
+    - rawText: Two emails from Gina. Verifiers ranked first this month. [ (500%)/400%/120%
+        ] performance. Double bonus.
+      segments:
+      - segmentType: 0
+        text: Two
         options: []
         correctIndex: 0
       - segmentType: 0
-        text: archive
+        text: emails
         options: []
         correctIndex: 0
       - segmentType: 0
-        text: keeps
+        text: from
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: Gina.
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: Verifiers
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: ranked
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: first
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: this
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: month.
+        options: []
+        correctIndex: 0
+      - segmentType: 1
+        text: 
+        options:
+        - 500%
+        - 400%
+        - 120%
+        correctIndex: 0
+      - segmentType: 0
+        text: performance.
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: Double
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: bonus.
+        options: []
+        correctIndex: 0
+    - rawText: Archive's still syncing. Evan said Ryan is [promoted /fired / (gone)].
+        "Pick up his tasks."Did I finish those? Can't remember. Different team now
+        anyway.
+      segments:
+      - segmentType: 0
+        text: Archive's
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: still
         options: []
         correctIndex: 0
       - segmentType: 0
@@ -7287,17 +7463,16 @@ MonoBehaviour:
       - segmentType: 1
         text: 
         options:
-        - gone
-        - fired
-        - transferred
         - promoted
-        correctIndex: 0
+        - fired
+        - gone
+        correctIndex: 2
       - segmentType: 0
         text: .
         options: []
         correctIndex: 0
       - segmentType: 0
-        text: Pick
+        text: '"Pick'
         options: []
         correctIndex: 0
       - segmentType: 0
@@ -7309,26 +7484,121 @@ MonoBehaviour:
         options: []
         correctIndex: 0
       - segmentType: 0
-        text: tasks.
+        text: tasks."Did
         options: []
         correctIndex: 0
-    - rawText: Shaw emailed me. Says the old emails from Reviewers will [ (sync back)
-        / arrive fresh / be deleted / stay locked] soon.
+      - segmentType: 0
+        text: I
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: finish
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: those?
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: Can't
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: remember.
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: Different
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: team
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: now
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: anyway.
+        options: []
+        correctIndex: 0
+    - rawText: Abby asked about Saturday. Said someone on our team was in the [office/ 
+        (hospital)/ meeting ] again. Forgot to send her the new address, I think.
       segments:
       - segmentType: 0
-        text: Shaw
+        text: Abby
         options: []
         correctIndex: 0
       - segmentType: 0
-        text: emailed
+        text: asked
         options: []
         correctIndex: 0
       - segmentType: 0
-        text: me.
+        text: about
         options: []
         correctIndex: 0
       - segmentType: 0
-        text: Says
+        text: Saturday.
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: Said
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: someone
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: on
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: our
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: team
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: was
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: in
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: the
+        options: []
+        correctIndex: 0
+      - segmentType: 1
+        text: 
+        options:
+        - office
+        - hospital
+        - meeting
+        correctIndex: 1
+      - segmentType: 0
+        text: again.
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: Forgot
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: to
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: send
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: her
         options: []
         correctIndex: 0
       - segmentType: 0
@@ -7336,11 +7606,442 @@ MonoBehaviour:
         options: []
         correctIndex: 0
       - segmentType: 0
+        text: new
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: address,
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: I
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: think.
+        options: []
+        correctIndex: 0
+    - rawText: News says someone at the company [ complained/quit / (died) ] last
+        week. PR called it "personal health conditions."
+      segments:
+      - segmentType: 0
+        text: Abby
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: asked
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: about
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: Saturday.
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: Said
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: someone
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: on
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: our
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: team
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: was
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: in
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: the
+        options: []
+        correctIndex: 0
+      - segmentType: 1
+        text: 
+        options:
+        - office
+        - hospital
+        - meeting
+        correctIndex: 1
+      - segmentType: 0
+        text: again.
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: Forgot
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: to
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: send
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: her
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: the
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: new
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: address,
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: I
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: think.
+        options: []
+        correctIndex: 0
+    - rawText: Not sure what to do with that.
+      segments:
+      - segmentType: 0
+        text: Not
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: sure
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: what
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: to
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: do
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: with
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: that.
+        options: []
+        correctIndex: 0
+  - day: 3
+    sentences:
+    - rawText: 19/07/2025
+      segments:
+      - segmentType: 0
+        text: 19/07/2025
+        options: []
+        correctIndex: 0
+    - rawText: Gina sent a memo. [Promotions /(Confidentiality)  / Deadlines]. Access
+        restricted. Words were missing.
+      segments:
+      - segmentType: 0
+        text: Gina
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: sent
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: a
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: memo.
+        options: []
+        correctIndex: 0
+      - segmentType: 1
+        text: 
+        options:
+        - Promotions
+        - Confidentiality
+        - Deadlines
+        correctIndex: 1
+      - segmentType: 0
+        text: .
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: Access
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: restricted.
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: Words
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: were
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: missing.
+        options: []
+        correctIndex: 0
+    - rawText: Can't even read the [ (news)/emails / forums ] on breaks anymore.
+        Day feels longer.
+      segments:
+      - segmentType: 0
+        text: Can't
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: even
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: read
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: the
+        options: []
+        correctIndex: 0
+      - segmentType: 1
+        text: 
+        options:
+        - news
+        - emails
+        - forums
+        correctIndex: 0
+      - segmentType: 0
+        text: on
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: breaks
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: anymore.
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: Day
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: feels
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: longer.
+        options: []
+        correctIndex: 0
+    - rawText: '"Select all images with [documents/buildings / (birds) ]." Verify.
+        Verify. Verify. Verify. '
+      segments:
+      - segmentType: 0
+        text: '"Select'
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: all
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: images
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: with
+        options: []
+        correctIndex: 0
+      - segmentType: 1
+        text: 
+        options:
+        - documents
+        - buildings
+        - birds
+        correctIndex: 2
+      - segmentType: 0
+        text: ."
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: Verify.
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: Verify.
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: Verify.
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: Verify.
+        options: []
+        correctIndex: 0
+    - rawText: Ryan's in the news. Of course he is. He was always the one who'd [
+        (push back)/ stay quiet / fit in].
+      segments:
+      - segmentType: 0
+        text: Ryan's
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: in
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: the
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: news.
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: Of
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: course
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: he
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: is.
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: He
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: was
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: always
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: the
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: one
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: who'd
+        options: []
+        correctIndex: 0
+      - segmentType: 1
+        text: 
+        options:
+        - push back
+        - stay quiet
+        - fit in
+        correctIndex: 0
+      - segmentType: 0
+        text: .
+        options: []
+        correctIndex: 0
+    - rawText: Good for him.
+      segments:
+      - segmentType: 0
+        text: Good
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: for
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: him.
+        options: []
+        correctIndex: 0
+  - day: 4
+    sentences:
+    - rawText: 20/07/2025
+      segments:
+      - segmentType: 0
+        text: 20/07/2025
+        options: []
+        correctIndex: 0
+    - rawText: Still working.
+      segments:
+      - segmentType: 0
+        text: Still
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: working.
+        options: []
+        correctIndex: 0
+    - rawText: Found an old medical report in the archive. Exam from 02/07. Three
+        things came back abnormal. I don't remember going.
+      segments:
+      - segmentType: 0
+        text: Found
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: an
+        options: []
+        correctIndex: 0
+      - segmentType: 0
         text: old
         options: []
         correctIndex: 0
       - segmentType: 0
-        text: emails
+        text: medical
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: report
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: in
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: the
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: archive.
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: Exam
         options: []
         correctIndex: 0
       - segmentType: 0
@@ -7348,24 +8049,281 @@ MonoBehaviour:
         options: []
         correctIndex: 0
       - segmentType: 0
-        text: Reviewers
+        text: 02/07.
         options: []
         correctIndex: 0
       - segmentType: 0
-        text: will
+        text: Three
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: things
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: came
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: back
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: abnormal.
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: I
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: don't
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: remember
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: going.
+        options: []
+        correctIndex: 0
+    - rawText: '"Select all images with [warnings /arrows / (medical equipment) ]." 
+        Verify. Verify. '
+      segments:
+      - segmentType: 0
+        text: '"Select'
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: all
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: images
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: with
         options: []
         correctIndex: 0
       - segmentType: 1
         text: 
         options:
-        - sync back
-        - arrive fresh
-        - be deleted
-        - stay locked
+        - warnings
+        - arrows
+        - medical equipment
+        correctIndex: 2
+      - segmentType: 0
+        text: ."
+        options: []
         correctIndex: 0
       - segmentType: 0
-        text: soon.
+        text: Verify.
         options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: Verify.
+        options: []
+        correctIndex: 0
+    - rawText: Uncomfortable.
+      segments:
+      - segmentType: 0
+        text: Uncomfortable.
+        options: []
+        correctIndex: 0
+    - rawText: News mentioned the man who died. Ben, a common name. Probably.
+      segments:
+      - segmentType: 0
+        text: News
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: mentioned
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: the
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: man
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: who
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: died.
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: Ben,
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: a
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: common
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: name.
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: Probably.
+        options: []
+        correctIndex: 0
+  - day: 5
+    sentences:
+    - rawText: 21/07/2025
+      segments:
+      - segmentType: 0
+        text: 21/07/2025
+        options: []
+        correctIndex: 0
+    - rawText: Shaw sent me an email three years ago. About his retirement.
+      segments:
+      - segmentType: 0
+        text: Shaw
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: sent
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: me
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: an
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: email
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: three
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: years
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: ago.
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: About
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: his
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: retirement.
+        options: []
+        correctIndex: 0
+    - rawText: Shaw retired three years ago.
+      segments:
+      - segmentType: 0
+        text: Shaw
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: retired
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: three
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: years
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: ago.
+        options: []
+        correctIndex: 0
+    - rawText: Shaw welcomed me to Verifiers days before.
+      segments:
+      - segmentType: 0
+        text: Shaw
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: welcomed
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: me
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: to
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: Verifiers
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: days
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: before.
+        options: []
+        correctIndex: 0
+    - rawText: Ben. The man who died. Ben.
+      segments:
+      - segmentType: 0
+        text: Ben.
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: The
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: man
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: who
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: died.
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: Ben.
+        options: []
+        correctIndex: 0
+    - rawText: 'I am [(Ben)]'
+      segments:
+      - segmentType: 0
+        text: I
+        options: []
+        correctIndex: 0
+      - segmentType: 0
+        text: am
+        options: []
+        correctIndex: 0
+      - segmentType: 1
+        text: 
+        options:
+        - Ben
         correctIndex: 0
   logContentRoot: {fileID: 1192418471}
   sentencePrefab: {fileID: 6992638579400709617, guid: ef93e4a9310c35144ae9c87b4caa833c, type: 3}
@@ -7895,9 +8853,9 @@ RectTransform:
   m_Father: {fileID: 1712905700}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
-  m_AnchorMax: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 20, y: 0}
+  m_SizeDelta: {x: 20, y: -17}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &663794967
 MonoBehaviour:
@@ -8735,7 +9693,7 @@ RectTransform:
   m_Father: {fileID: 892580042}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -12384,7 +13342,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1014389528
 RectTransform:
   m_ObjectHideFlags: 0
@@ -14563,9 +15521,9 @@ RectTransform:
   m_Father: {fileID: 1712905700}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 20}
+  m_SizeDelta: {x: -17, y: 20}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &1141043309
 MonoBehaviour:
@@ -15986,9 +16944,9 @@ RectTransform:
   m_Father: {fileID: 800776042}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: -17, y: -17}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1256774914
 MonoBehaviour:
@@ -16092,9 +17050,9 @@ RectTransform:
   m_Father: {fileID: 1712905700}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: -17, y: -17}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1292535541
 MonoBehaviour:
@@ -16668,9 +17626,9 @@ RectTransform:
   m_Father: {fileID: 800776042}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 20}
+  m_SizeDelta: {x: -17, y: 20}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &1335728907
 MonoBehaviour:
@@ -22214,7 +23172,7 @@ RectTransform:
   m_Father: {fileID: 2027768570}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -22836,8 +23794,8 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 295022304}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 0.0424999}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -24937,7 +25895,7 @@ RectTransform:
   m_Father: {fileID: 1736493769}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -27131,9 +28089,9 @@ RectTransform:
   m_Father: {fileID: 800776042}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
-  m_AnchorMax: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 20, y: 0}
+  m_SizeDelta: {x: 20, y: -17}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &2119418523
 MonoBehaviour:
