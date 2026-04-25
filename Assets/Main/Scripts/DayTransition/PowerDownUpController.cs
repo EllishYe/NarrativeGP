@@ -9,6 +9,7 @@ namespace NarrativeGP.DayTransition
     {
         [Header("Dependencies")]
         [SerializeField] private GameState gameState;
+        [SerializeField] private SignInController signInController;
 
         [Header("UI")]
         [SerializeField] private Graphic blackBackground;
@@ -60,10 +61,18 @@ namespace NarrativeGP.DayTransition
             if (currentDay < maxDay)
             {
                 Debug.Log("PowerDownUp complete. Go to SignIn.");
+                if (signInController != null)
+                {
+                    signInController.Show();
+                }
                 yield break;
             }
 
-            Debug.Log("PowerDownUp complete. Go to Ending.");
+            Debug.Log("PowerDownUp complete. Go to ending SignIn.");
+            if (signInController != null)
+            {
+                signInController.ShowEnding();
+            }
         }
 
         private void SetPanelVisible(bool visible)
