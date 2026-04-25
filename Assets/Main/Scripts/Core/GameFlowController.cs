@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using NarrativeGP.Desk;
 using NarrativeGP.Emails;
 using NarrativeGP.News;
 
@@ -9,6 +10,7 @@ namespace NarrativeGP
     {
         [SerializeField] private GameState gameState;
         [SerializeField] private SectionFlowDefinition flowDefinition;
+        [SerializeField] private DeskWorkdayController deskWorkdayController;
         [SerializeField] private EmailsController emailsController;
         [SerializeField] private NewsController newsController;
 
@@ -146,6 +148,11 @@ namespace NarrativeGP
             if (emailsController != null)
             {
                 emailsController.SyncSectionProgressToGameState(gameState);
+            }
+
+            if (deskWorkdayController != null)
+            {
+                deskWorkdayController.SyncSectionProgressToGameState(gameState);
             }
 
             if (newsController != null)

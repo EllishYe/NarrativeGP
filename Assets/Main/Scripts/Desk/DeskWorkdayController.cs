@@ -8,12 +8,21 @@ namespace NarrativeGP.Desk
 {
     public class DeskWorkdayController : MonoBehaviour
     {
+        [System.Serializable]
+        private class DayTaskSet
+        {
+            public int day = 1;
+            public List<DeskTaskData> tasks = new();
+        }
+
         [Header("Day Tasks")]
         [SerializeField] private int tasksPerDay = 5;
         [SerializeField] private List<DeskTaskData> currentDayTasks = new();
+        [SerializeField] private List<DayTaskSet> dayTaskSets = new();
         [SerializeField] private DeskTaskData completedStateTask;
 
         [Header("Dependencies")]
+        [SerializeField] private GameState gameState;
         [SerializeField] private DeskTaskController deskTaskController;
 
         [Header("Progress UI")]
@@ -26,6 +35,12 @@ namespace NarrativeGP.Desk
 
         private int currentTaskIndex;
         private int completedTaskCount;
+        private int loadedDay = -1;
+
+        private void Reset()
+        {
+            gameState = FindFirstObjectByType<GameState>();
+        }
 
         private void Awake()
         {
@@ -34,7 +49,25 @@ namespace NarrativeGP.Desk
                 deskTaskController.TaskSubmitted += HandleTaskSubmitted;
             }
 
-            StartWorkday();
+            RefreshWorkdayForCurrentGameDay(true);
+        }
+
+        private void OnEnable()
+        {
+            if (gameState != null)
+            {
+                gameState.StateChanged += HandleGameStateChanged;
+            }
+
+            RefreshWorkdayForCurrentGameDay(false);
+        }
+
+        private void OnDisable()
+        {
+            if (gameState != null)
+            {
+                gameState.StateChanged -= HandleGameStateChanged;
+            }
         }
 
         private void OnDestroy()
@@ -59,6 +92,29 @@ namespace NarrativeGP.Desk
 
             LoadCurrentTask();
             RefreshProgress();
+            SyncSectionProgress();
+        }
+
+        [ContextMenu("Reload Day Tasks")]
+        public void ReloadDayTasks()
+        {
+            RefreshWorkdayForCurrentGameDay(true);
+        }
+
+        public void SyncSectionProgressToGameState(GameState targetGameState)
+        {
+            if (targetGameState == null)
+            {
+                return;
+            }
+
+            RefreshWorkdayForCurrentGameDay(false);
+
+            bool hasIncompleteTasks = completedTaskCount < GetTaskTargetCount();
+            targetGameState.SetSectionDailyProgress(
+                SectionId.Desk,
+                hasIncompleteTasks,
+                !hasIncompleteTasks);
         }
 
         private void HandleTaskSubmitted()
@@ -72,6 +128,7 @@ namespace NarrativeGP.Desk
             currentTaskIndex++;
 
             RefreshProgress();
+            SyncSectionProgress();
 
             if (completedTaskCount >= GetTaskTargetCount())
             {
@@ -128,6 +185,46 @@ namespace NarrativeGP.Desk
             }
 
             return Mathf.Min(tasksPerDay, currentDayTasks.Count);
+        }
+
+        private void SyncSectionProgress()
+        {
+            SyncSectionProgressToGameState(gameState);
+        }
+
+        private void HandleGameStateChanged()
+        {
+            RefreshWorkdayForCurrentGameDay(false);
+        }
+
+        private void RefreshWorkdayForCurrentGameDay(bool forceReload)
+        {
+            int currentDay = gameState != null ? Mathf.Max(1, gameState.CurrentDay) : 1;
+            if (!forceReload && loadedDay == currentDay)
+            {
+                return;
+            }
+
+            loadedDay = currentDay;
+
+            if (dayTaskSets != null && dayTaskSets.Count > 0)
+            {
+                DayTaskSet matchedSet = null;
+                foreach (DayTaskSet taskSet in dayTaskSets)
+                {
+                    if (taskSet != null && taskSet.day == currentDay)
+                    {
+                        matchedSet = taskSet;
+                        break;
+                    }
+                }
+
+                currentDayTasks = matchedSet != null
+                    ? new List<DeskTaskData>(matchedSet.tasks)
+                    : new List<DeskTaskData>();
+            }
+
+            StartWorkday();
         }
     }
 }
