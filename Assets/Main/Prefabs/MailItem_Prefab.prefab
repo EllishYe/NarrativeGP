@@ -39,7 +39,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: -30}
-  m_SizeDelta: {x: 380, y: 60}
+  m_SizeDelta: {x: 444, y: 78}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3418415005758204861
 CanvasRenderer:
@@ -69,8 +69,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 228766a199f46bc479f4928079fd03ae, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -150,10 +150,13 @@ MonoBehaviour:
   button: {fileID: 3401409840923587234}
   background: {fileID: 8470446246134053057}
   subjectText: {fileID: 1036886243923385418}
-  unreadTextColor: {r: 1, g: 0, b: 0, a: 1}
-  readTextColor: {r: 0, g: 0, b: 0, a: 1}
+  unreadTextColor: {r: 0.42352942, g: 0.5372549, b: 0.6313726, a: 1}
+  readTextColor: {r: 0.23137255, g: 0.23137255, b: 0.23137255, a: 1}
+  unreadSelectedBackgroundColor: {r: 0.42352942, g: 0.5372549, b: 0.6313726, a: 1}
+  unreadSelectedTextColor: {r: 1, g: 1, b: 1, a: 1}
+  readSelectedBackgroundColor: {r: 0.8156863, g: 0.84313726, b: 0.8784314, a: 1}
+  readSelectedTextColor: {r: 0.23270428, g: 0.23270428, b: 0.23270428, a: 1}
   normalBackgroundColor: {r: 1, g: 1, b: 1, a: 1}
-  selectedBackgroundColor: {r: 0.85, g: 0.85, b: 0.85, a: 1}
 --- !u!114 &-5074456697118286558
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -169,8 +172,8 @@ MonoBehaviour:
   m_IgnoreLayout: 0
   m_MinWidth: -1
   m_MinHeight: -1
-  m_PreferredWidth: 380
-  m_PreferredHeight: 60
+  m_PreferredWidth: 444
+  m_PreferredHeight: 78
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
   m_LayoutPriority: 1
@@ -241,8 +244,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Email Title
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 30cc281f06469034eb20450913a7dbe2, type: 2}
+  m_sharedMaterial: {fileID: 6664429627677149788, guid: 30cc281f06469034eb20450913a7dbe2, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -266,8 +269,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 28
+  m_fontSizeBase: 28
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
