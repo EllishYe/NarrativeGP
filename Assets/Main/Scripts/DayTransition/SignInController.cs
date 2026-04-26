@@ -2,6 +2,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
+using UnityEngine.Events;
 using NarrativeGP.Ending;
 
 namespace NarrativeGP.DayTransition
@@ -38,6 +39,9 @@ namespace NarrativeGP.DayTransition
         [SerializeField] private TMP_Text checkboxLabelText;
         [SerializeField] private Button signInButton;
         [SerializeField] private EndAnimController endAnimController;
+
+        [Header("Events")]
+        [SerializeField] private UnityEvent onGoToEndAnim;
 
         private SignInScenarioData activeScenario;
         private int currentInputCount;
@@ -147,6 +151,7 @@ namespace NarrativeGP.DayTransition
             if (activeScenario != null && activeScenario.completionMode == SignInCompletionMode.GoToEndAnim)
             {
                 SetVisible(false);
+                onGoToEndAnim?.Invoke();
 
                 if (endAnimController != null)
                 {
